@@ -55,10 +55,11 @@ _bmad/
 _bmad-output/
 
 # ── Claude Code ───────────────────────────────────────────────────────
-# Committed on purpose: .claude/skills/ and .claude/settings.json are
-# project configuration the team (and Claude) needs. Personal overrides
-# are not.
-.claude/settings.local.json
+# .claude/ currently holds a vendored BMAD skill catalog (54 skills from
+# the 6.11.0 distribution), not project-authored configuration. Ignored
+# until we decide whether this project is driven from here at all.
+# Revisit when we author our own skills — those belong in the repo.
+.claude/
 CLAUDE.local.md
 
 # ── Application data ──────────────────────────────────────────────────
