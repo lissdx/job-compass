@@ -1,0 +1,88 @@
+# ── OS ────────────────────────────────────────────────────────────────
+.DS_Store
+Thumbs.db
+
+# ── Editors / IDE ─────────────────────────────────────────────────────
+.idea/
+.vscode/
+*.swp
+*.swo
+*~
+
+# ── Logs ──────────────────────────────────────────────────────────────
+*.log
+
+# ── Python ────────────────────────────────────────────────────────────
+__pycache__/
+*.py[cod]
+*$py.class
+*.so
+.Python
+.venv/
+venv/
+env/
+.pytest_cache/
+.mypy_cache/
+.ruff_cache/
+.coverage
+.coverage.*
+htmlcov/
+.tox/
+*.egg-info/
+.eggs/
+dist/
+build/
+
+# ── Node (if a UI ever lands here) ────────────────────────────────────
+node_modules/
+
+# ── Jupyter ───────────────────────────────────────────────────────────
+.ipynb_checkpoints/
+
+# ── Secrets and environment ───────────────────────────────────────────
+# Never commit these: the AI layer needs provider keys.
+.env
+.env.*
+!.env.example
+*.pem
+*.key
+credentials.json
+secrets.yaml
+
+# ── BMAD ──────────────────────────────────────────────────────────────
+# Tooling and its generated artifacts, not project source.
+_bmad/
+_bmad-output/
+
+# ── Claude Code ───────────────────────────────────────────────────────
+# Committed on purpose: .claude/skills/ and .claude/settings.json are
+# project configuration the team (and Claude) needs. Personal overrides
+# are not.
+.claude/settings.local.json
+CLAUDE.local.md
+
+# ── Application data ──────────────────────────────────────────────────
+# The database holds real applications, real companies and real people's
+# contact details. Schema and migrations are source; the data is not.
+*.db
+*.db-journal
+*.db-wal
+*.db-shm
+*.sqlite
+*.sqlite3
+data/
+exports/
+
+# ── AI / retrieval artifacts ──────────────────────────────────────────
+# Regenerable from source; large and binary.
+.chroma/
+chroma_db/
+*.faiss
+*.index
+embeddings/
+.cache/
+
+# ── Scratch ───────────────────────────────────────────────────────────
+tmp/
+scratch/
+*.bak
