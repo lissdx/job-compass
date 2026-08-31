@@ -1,0 +1,49 @@
+[project]
+name = "job-compass"
+version = "0.1.0"
+description = "A conversational record of a job search: every application, recruiter and stage, stored and queryable."
+readme = "README.md"
+requires-python = ">=3.14"
+license = "MIT"
+license-files = ["LICENSE"]
+authors = [{ name = "lissdx" }]
+keywords = ["job-search", "cli", "sqlite", "agents"]
+dependencies = []
+
+# Only what the repository itself needs. Not shipped to anyone installing the package.
+# PEP 735: putting pytest in [project.optional-dependencies] would force consumers to
+# install the package just to get the test tooling.
+[dependency-groups]
+lint = ["ruff>=0.14"]
+typecheck = ["mypy>=1.18"]
+tests = ["pytest>=9.0"]
+dev = [{ include-group = "lint" }, { include-group = "typecheck" }, { include-group = "tests" }]
+
+[build-system]
+requires = ["hatchling>=1.27"]
+build-backend = "hatchling.build"
+
+[tool.hatch.build.targets.wheel]
+# Only what ships. Anything outside this path is not importable at runtime,
+# which is why tests/, db/ and docs/ live above src/ and evals/ will live inside it.
+packages = ["src/job_compass"]
+
+[tool.ruff]
+line-length = 100
+src = ["src", "tests"]
+# target-version is deliberately NOT set: ruff derives it from requires-python,
+# and two sources of the same fact drift apart.
+
+[tool.ruff.lint]
+select = ["E", "F", "I", "UP", "B", "SIM", "RUF"]
+# E501 is owned by the formatter; here it only fires on unbreakable strings.
+ignore = ["E501"]
+
+[tool.mypy]
+python_version = "3.14"
+strict = true
+files = ["src", "tests"]
+
+[tool.pytest.ini_options]
+testpaths = ["tests"]
+addopts = "-q"
